@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
-        Button blowOut = findViewById(R.id.blowOut);
+        Button blowOut = findViewById(R.id.Extinguish);
         CompoundButton candleSwitch = findViewById(R.id.candleSwitch);
         SeekBar candleSeekBar = findViewById(R.id.candleSeekBar);
         CakeView cakeview = findViewById(R.id.cakeview);
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         blowOut.setOnClickListener(controller);
         candleSwitch.setOnCheckedChangeListener(controller);
         candleSeekBar.setOnSeekBarChangeListener(controller);
-
+        cakeview.setOnTouchListener(controller);
 
     }
 
