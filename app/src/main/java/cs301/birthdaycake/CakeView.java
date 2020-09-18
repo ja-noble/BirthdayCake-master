@@ -5,7 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
+import android.view.View;
+
 
 public class CakeView extends SurfaceView {
 
@@ -17,6 +20,7 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
     Paint balloonPaint = new Paint();
+    Paint xyPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -34,6 +38,7 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+
 
     private CakeModel model;
 
@@ -58,6 +63,7 @@ public class CakeView extends SurfaceView {
         outerFlamePaint.setColor(0xFFFFD700);  //gold yellow
         outerFlamePaint.setStyle(Paint.Style.FILL);
         innerFlamePaint.setColor(0xFFFFA500);  //orange
+        innerFlamePaint.setColor(0xFFFFA500);  //orange
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
@@ -65,6 +71,7 @@ public class CakeView extends SurfaceView {
         balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
+
 
     }
 
@@ -101,6 +108,8 @@ public class CakeView extends SurfaceView {
         float wickLeft = left + candleWidth/2 - wickWidth/2;
         float wickTop = bottom - wickHeight - candleHeight;
         canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
+
+
 
     }
 
@@ -147,6 +156,11 @@ public class CakeView extends SurfaceView {
             canvas.drawOval(model.x - 50, model.y + 70, model.x + 50, model.y - 70, balloonPaint);
             canvas.drawLine(model.x, model.y + 70, model.x, model.y + 140, wickPaint);
         }
+
+        xyPaint.setTextSize(75);
+        xyPaint.setColor(Color.RED);
+        canvas.drawText("X Coord: " + model.x, 2000, 1000, xyPaint);
+        canvas.drawText("Y Coord: " + model.y, 2000, 1100, xyPaint);
 
     }//onDraw
 
