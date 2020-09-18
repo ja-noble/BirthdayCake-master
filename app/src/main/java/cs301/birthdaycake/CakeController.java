@@ -10,6 +10,7 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
 
     private CakeView cake;
     private CakeModel model;
+    private static final String TAG = "touch";
 
     public CakeController (CakeView view)
     {
@@ -50,6 +51,14 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+        cake.invalidate();
+        model.touch = true;
+        model.x = (int) motionEvent.getX();
+        model.y = (int) motionEvent.getY();
+        String xcoord = "x coord ='s " + model.x;
+        String ycoord = "y coord ='s " + model.y;
+        Log.d(TAG, xcoord);
+        Log.d(TAG, ycoord);
         return false;
     }
 }
